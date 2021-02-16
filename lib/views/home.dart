@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Find the best tour",
+                "Find the Best Tour",
                 style: TextStyle(
                     fontSize: 28,
                     color: Colors.black54,
@@ -124,6 +124,7 @@ class _HomeState extends State<Home> {
                       title: popularTourModels[index].title,
                       price: popularTourModels[index].price,
                       rating: popularTourModels[index].rating,
+                      info: popularTourModels[index].info,
                     );
                   })
             ],
@@ -140,12 +141,9 @@ class PopularTours extends StatelessWidget {
   final String desc;
   final String price;
   final double rating;
+  final String info;
   PopularTours(
-      {@required this.imgUrl,
-        @required this.rating,
-        @required this.desc,
-        @required this.price,
-        @required this.title});
+      {this.imgUrl, this.rating, this.desc, this.price, this.title, this.info});
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +156,7 @@ class PopularTours extends StatelessWidget {
                 imgUrl: imgUrl,
                 placeName: title,
                 rating: rating,
+                info: info,
               )));
     },
       child: Container(
@@ -218,7 +217,7 @@ class PopularTours extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
-                    color: Color(0xff139157)),
+                    color: Color(0xff8a6293)),
                 child: Column(
                   children: [
                     Text(
@@ -252,8 +251,8 @@ class CountryListTile extends StatelessWidget {
   final double rating;
   final String imgUrl;
   CountryListTile(
-      {@required this.countryName,
-        @required this.label,
+      {@required this.label,
+        @required this.countryName,
         @required this.noOfTours,
         @required this.rating,
         @required this.imgUrl});
@@ -303,7 +302,7 @@ class CountryListTile extends StatelessWidget {
                         children: [
                           Container(
                             child: Text(
-                              "Thailand",
+                              countryName,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
@@ -314,7 +313,7 @@ class CountryListTile extends StatelessWidget {
                             height: 3,
                           ),
                           Text(
-                            "18 Tours",
+                            "$noOfTours",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
@@ -334,7 +333,7 @@ class CountryListTile extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "4.5",
+                              "$rating",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
@@ -358,5 +357,6 @@ class CountryListTile extends StatelessWidget {
         ],
       ),
     );
+
   }
 }
